@@ -1,0 +1,15 @@
+{
+	"name": "link.gh",
+	"version": "1.0",
+	"description":"Fill out GH Prospecting fields from a LI page",
+	"background": {
+		"page": "background.html"
+	},
+	"page_action": {
+		"default_icon":"in.png",
+		"default_title":"Fill out GH Prospecting fields from a LI page"
+	},
+	"permissions": [ "https://*.linkedin.com/", "tabs" ],
+	"manifest_version": 2
+}
+
