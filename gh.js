@@ -10,7 +10,8 @@
 chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
 	if (message.type == 'GH') {
 		name_tokens = message.name.split(' ');
-		document.getElementById('person_first_name').value = name_tokens[0];
+		var person_first_name = document.getElementById('person_first_name');
+		person_first_name.value = name_tokens[0];
 
 		// assuming last name is everything in the name except first name
 		name_tokens.splice(0, 1);
@@ -27,12 +28,19 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
 
 		document.getElementById('social_media').value = message.url;
 
-		var li_url = document.createElement('a');
-		var name = document.createTextNode(message.name);
-		li_url.appendChild(name);
-		li_url.title = message.name;
-		li_url.href = message.url;
-		document.getElementById('names').appendChild(li_url);
+
+		// clear any existing url nodes
+		var li_url_prev = document.getElementById('li_url');
+		if (!li_url_prev) {
+			var li_url = document.createElement('a');
+			var name = document.createTextNode(message.name);
+			li_url.appendChild(name);
+			li_url.title = message.name;
+			li_url.href = message.url;
+			var names = document.getElementById('names');
+			names.parentNode.appendChild(li_url);
+			li_url.id = 'li_url';
+		}
 
 	}
 });

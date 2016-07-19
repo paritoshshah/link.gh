@@ -15,6 +15,10 @@
 			"matches": ["https://app.greenhouse.io/*"],
 			"js": ["gh.js"],
 			"all_frames": true
+		},
+		{
+			"matches": ["https://*.linkedin.com/*"],
+			"js": ["li.js"]
 		}
 	],
 	"manifest_version": 2
