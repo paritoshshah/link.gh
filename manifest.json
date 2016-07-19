@@ -9,7 +9,14 @@
 		"default_icon":"in.png",
 		"default_title":"Fill out GH Prospecting fields from a LI page"
 	},
-	"permissions": [ "https://*.linkedin.com/", "tabs" ],
+	"permissions": [ "https://*.linkedin.com/", "https://app.greenhouse.io/*", "tabs" ],
+	"content_scripts": [
+		{
+			"matches": ["https://app.greenhouse.io/*"],
+			"js": ["gh.js"],
+			"all_frames": true
+		}
+	],
 	"manifest_version": 2
 }
 

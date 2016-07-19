@@ -4,8 +4,21 @@
 // @match http://linkedin.com/*
 // @match https://linkedin.com/*
 // @match https://*.linkedin.com/*
+// @match https://app.greenhouse.io/*
 // ==/UserScript==
 
-try {
-	document.getElementById("name").style.backgroundColor = 'yellow';
-} catch(e) {};
+function parse_profile() {
+	return { name: document.getElementById('name').innerText, headline: document.getElementById('headline').innerText, url: document.getElementsByClassName('view-public-profile')[0].href };
+}
+
+chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
+	if (message.type == 'LI') {
+		console.log('LI got message:');
+		console.log(message);
+		if(message.query == 'parse_profile') {
+			sendResponse(parse_profile());
+		}
+	}
+});
+
+console.log("LI: li.js loaded");
