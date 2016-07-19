@@ -1,4 +1,4 @@
 link.gh
 ==========
 
-Make it so that GH Prospecting tool actually works on LI
+Fill out GH Prospecting fields from a LI page
