@@ -13,12 +13,8 @@ function parse_profile() {
 
 chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
 	if (message.type == 'LI') {
-		console.log('LI got message:');
-		console.log(message);
 		if(message.query == 'parse_profile') {
 			sendResponse(parse_profile());
 		}
 	}
 });
-
-console.log("LI: li.js loaded");
