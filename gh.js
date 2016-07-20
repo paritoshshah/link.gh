@@ -25,6 +25,9 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
 			headline_tokens.splice(0, 1);
 			document.getElementById('person_company').value = headline_tokens.join(' ');
 		}
+		else {
+			document.getElementById('person_company').value = message.current;
+		}
 
 		document.getElementById('social_media').value = message.url;
 
